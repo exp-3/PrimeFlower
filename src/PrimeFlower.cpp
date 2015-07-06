@@ -2,7 +2,7 @@
 
 PrimeFlower::PrimeFlower(int num) {
     scale = 0.95;
-    circles.reserve(1000);
+    circles.reserve(10000);
     setNumber(num);
 }
 
@@ -35,7 +35,6 @@ void PrimeFlower::fractal(std::vector<int>& factors, double x, double y, double 
     }
 
     int vertices = factors.back();
-    factors.pop_back();
 
     if(vertices == 1) {
         counter->setPosition(x, y, 0.0);
@@ -45,11 +44,11 @@ void PrimeFlower::fractal(std::vector<int>& factors, double x, double y, double 
         double childRadius = scale * radius * (1 - 1 / (1 + sin(M_PI / vertices)));
         radius -= childRadius;
 
+        factors.pop_back();
         for(int i = 0; i < vertices; i++) {
             double theta = 2 * i * M_PI / vertices + angle;
             fractal(factors, x - radius * sin(theta), y + radius * cos(theta), childRadius, theta);
         }
+        factors.push_back(vertices);
     }
-
-    factors.push_back(vertices);
 }

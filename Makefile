@@ -2,7 +2,7 @@
 
 TARGET		= PrimeFlower
 
-CXX			= g++
+CXX			= clang++
 CXXFLAGS	= -std=c++0x -Wall -Wextra -Wconversion -g -O0 -MMD
 LDFLAGS		=
 LIBS		= -lGL -lGLU -lglut
