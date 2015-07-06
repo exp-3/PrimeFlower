@@ -13,7 +13,7 @@ void PrimeFlower::display() {
 }
 
 void PrimeFlower::setNumber(int num) {
-    std::vector<int> factors = factrize(num);
+    std::vector<int> factors = Factrize::factrize(num);
     if(num > (int) circles.size()) {
         if(circles.empty()) {
             circles.push_back(Circle());

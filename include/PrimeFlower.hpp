@@ -4,7 +4,7 @@
 #include <GL/glut.h>
 
 #include "Circle.hpp"
-#include "factrize.hpp"
+#include "Factrize.hpp"
 
 class PrimeFlower {
 public:
