@@ -45,7 +45,7 @@ void PrimeFlowerDraw::resetMatrix() {
 }
 
 void PrimeFlowerDraw::display() {
-    static int count = 60;
+    static int count = 0;
     if(count % 60 == 0) {
         primeFlower.setNumber(count / 60);
     }

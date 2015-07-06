@@ -1,8 +1,8 @@
 #include "PrimeFlower.hpp"
-#include <iostream>
 
 PrimeFlower::PrimeFlower(int num) {
     scale = 0.95;
+    circles.reserve(1000);
     setNumber(num);
 }
 
@@ -13,11 +13,14 @@ void PrimeFlower::display() {
 }
 
 void PrimeFlower::setNumber(int num) {
-    factors = factrize(num);
+    std::vector<int> factors = factrize(num);
     if(num > (int) circles.size()) {
+        if(circles.empty()) {
+            circles.push_back(Circle());
+        }
         int gap = num - (int) circles.size();
         for(int i = 0; i < gap; i++) {
-            circles.push_back(Circle());
+            circles.push_back(circles.back());
         }
     } else if(num < (int) circles.size()) {
         circles.erase(circles.begin() + num, circles.end());
@@ -26,7 +29,11 @@ void PrimeFlower::setNumber(int num) {
     fractal(factors, 0.0, 0.0, 1.0, 0.0);
 }
 
-void PrimeFlower::fractal(std::vector<int> factors, double x, double y, double radius, double angle) {
+void PrimeFlower::fractal(std::vector<int>& factors, double x, double y, double radius, double angle) {
+    if(factors.empty()) {
+        return;
+    }
+
     int vertices = factors.back();
     factors.pop_back();
 
@@ -35,11 +42,14 @@ void PrimeFlower::fractal(std::vector<int> factors, double x, double y, double r
         counter->setScale(radius);
         counter++;
     } else if(vertices > 1) {
-        double childRadius = scale * (1 - 1 / (1 + sin(M_PI / vertices))) * radius;
+        double childRadius = scale * radius * (1 - 1 / (1 + sin(M_PI / vertices)));
+        radius -= childRadius;
 
         for(int i = 0; i < vertices; i++) {
             double theta = 2 * i * M_PI / vertices + angle;
             fractal(factors, x - radius * sin(theta), y + radius * cos(theta), childRadius, theta);
         }
     }
+
+    factors.push_back(vertices);
 }
