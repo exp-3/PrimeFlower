@@ -27,11 +27,12 @@ void PrimeFlowerDraw::init(int argc, char *argv[]) {
 }
 
 void PrimeFlowerDraw::reshape(int w, int h) {
-    glViewport(0, 0, w, h);
+    int side = w < h ? w : h;
+    glViewport((w - side) / 2, (h - side) / 2, side, side);
 
     glLoadIdentity();
 
-    glOrtho(-w / 200.0, w / 200.0, -h / 200.0, h / 200.0, -1.0, 1.0);
+    //glOrtho(-w / 200.0, w / 200.0, -h / 200.0, h / 200.0, -1.0, 1.0);
 }
 
 void PrimeFlowerDraw::setMatrix() {

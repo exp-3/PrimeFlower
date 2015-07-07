@@ -5,9 +5,16 @@
 
 class Circle {
 public:
+    /** コンストラクタ*/
     Circle();
+
+    /** 円の半径を設定する*/
     void setScale(double tScale);
+
+    /** 円の中心座標を設定する*/
     void setPosition(double tX, double tY, double tZ);
+
+    /** 円を表示する*/
     void display();
 
 protected:
@@ -16,8 +23,9 @@ protected:
         Vertices(int num);
     };
 
-    int count;
-    double srcX, srcY, srcZ, dstX, dstY, dstZ, scale;
+    int countFromPositionSetting;
+    int countFromScaleSetting;
+    double srcX, srcY, srcZ, dstX, dstY, dstZ, srcScale, dstScale;
     static int num;
     static Vertices vertices;
 };

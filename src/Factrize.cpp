@@ -1,6 +1,6 @@
 #include "Factrize.hpp"
 
-/**与えられた集合内の素数を降順で返す*/
+/*与えられた集合内の素数を降順で返す*/
 std::list<int> sieve(std::list<int> primes) {
     if(!primes.empty()) {
         int first = primes.front();
@@ -21,7 +21,7 @@ std::list<int> sieve(std::list<int> primes) {
     return primes;
 }
 
-/**与えられた数の素因数分解の集合を昇順で返す*/
+/*与えられた数の素因数分解の集合を昇順で返す*/
 std::vector<int> subFactrize(std::list<int> primes, int num) {
     std::vector<int> factors;
 
@@ -41,7 +41,7 @@ std::vector<int> subFactrize(std::list<int> primes, int num) {
     return factors;
 }
 
-/**与えられた数の素因数の集合を昇順で返す(実装の都合上で素因数と言いつつ1と4が入っている)*/
+/*与えられた数の素因数の集合を昇順で返す(実装の都合上で素因数と言いつつ1と4が入っている)*/
 std::vector<int> Factrize::factrize(int num) {
     std::vector<int> factors;
     if(num > 0) {
