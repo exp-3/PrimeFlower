@@ -21,7 +21,7 @@ std::list<int> sieve(std::list<int> primes) {
     return primes;
 }
 
-/*与えられた数の素因数分解の集合を昇順で返す*/
+/*与えられた数の素因数の集合を昇順で返す*/
 std::vector<int> subFactrize(std::list<int> primes, int num) {
     std::vector<int> factors;
 
@@ -51,7 +51,7 @@ std::vector<int> Factrize::factrize(int num) {
         }
         primes = sieve(primes);
 
-        if(num >= 4) {
+        /*if(num >= 4) {
             std::vector<int> numStack;
             while(primes.back() < 4) {
                 numStack.push_back(primes.back());
@@ -62,7 +62,7 @@ std::vector<int> Factrize::factrize(int num) {
                 primes.push_back(numStack.back());
                 numStack.pop_back();
             }
-        }
+        }*/
 
         factors = subFactrize(primes, num);
     }
