@@ -29,5 +29,3 @@ class Circle {
   static int num;
   static Vertices vertices;
 };
-
-void test() { ; }
